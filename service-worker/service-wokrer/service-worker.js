@@ -19,3 +19,12 @@ self.addEventListener("fetch", function (event) {
     );
   }
 });
+
+self.addEventListener("message", function (event) {
+  console.log(event.data);
+  this.self.clients.matchAll().then(function (clients) {
+    clients.forEach(function (client) {
+      client.postMessage("[SW] : Hello, Client. Your Client id is :" + client.id);
+    });
+  });
+});
