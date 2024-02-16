@@ -3,14 +3,16 @@ const testPromise = new Promise((resolve) => {
   setTimeout(() => {
     console.log("In setTimeout");
     resolve();
-  }, 3);
+  }, 1000);
 });
 
 console.log("before promise");
 
 testPromise
   .then((result) => {
-    console.log("In Then Method 1.1", result);
+    setTimeout(() => {
+      console.log("In Then Method 1.1", result);
+    }, 1000);
   })
   .then(() => {
     console.log("In Then Method 1.2");
